@@ -18,13 +18,11 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         ApplyCharacterMovement();
-        RotationPlayer();
+        ApplyCharacterJump();
+        ApplyCharacterRunning();
     }
 
     private void ApplyCharacterMovement() => _MotorHandler.moveDir = _InputHandler.GetMovementInput();
-    private void RotationPlayer()
-    {
-        float _MouseX = _InputHandler.GetMouseInput().x;
-        gameObject.transform.Rotate(Vector3.up * _MouseX * HorizontalSensitivity * Time.deltaTime);
-    }
+    private void ApplyCharacterJump() => _MotorHandler.hasJumped = _InputHandler.GetJumpInput();
+    private void ApplyCharacterRunning() => _MotorHandler.isRunning = _InputHandler.GetRunningInput();
 }

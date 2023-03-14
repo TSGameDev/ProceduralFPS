@@ -3,6 +3,7 @@ using UnityEngine;
 public class InputHandler : MonoBehaviour
 {
     private PlayerInputs _PlayerInputs;
+    private bool _IsRunning;
 
     private void Awake()
     {
@@ -15,6 +16,9 @@ public class InputHandler : MonoBehaviour
 
         _PlayerInputs.Enable();
         _PlayerInputs.Gameplay.Enable();
+
+        _PlayerInputs.Gameplay.Running.performed += ctx => _IsRunning = true;
+        _PlayerInputs.Gameplay.Running.canceled += ctx => _IsRunning = false;
     }
 
     private void OnDisable()
@@ -26,5 +30,5 @@ public class InputHandler : MonoBehaviour
     public Vector2 GetMovementInput() => _PlayerInputs.Gameplay.Movement.ReadValue<Vector2>();
     public Vector2 GetMouseInput() => _PlayerInputs.Gameplay.MouseDelta.ReadValue<Vector2>();
     public bool GetJumpInput() => _PlayerInputs.Gameplay.Jump.triggered;
-
+    public bool GetRunningInput() => _IsRunning;
 }
