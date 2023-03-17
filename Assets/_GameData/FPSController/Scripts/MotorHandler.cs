@@ -3,7 +3,6 @@ using Sirenix.OdinInspector;
 
 public class MotorHandler : MonoBehaviour
 {
-    [SerializeField] private bool useCharacterController = true;
     [SerializeField] private Transform directionReference;
     [SerializeField] private float speed;
     [SerializeField] private float runningSpeed;
@@ -31,9 +30,7 @@ public class MotorHandler : MonoBehaviour
     private void Update()
     {
         _IsGrounded = _CharacterController.isGrounded;
-
-        if (useCharacterController)
-            CharacterControllerMovement();
+        CharacterControllerMovement();
 
         Debug.Log($"#Motor Handler# isRunning: {isRunning}");
     }
