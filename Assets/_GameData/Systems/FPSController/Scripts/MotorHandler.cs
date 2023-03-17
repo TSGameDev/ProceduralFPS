@@ -31,8 +31,6 @@ public class MotorHandler : MonoBehaviour
     {
         _IsGrounded = _CharacterController.isGrounded;
         CharacterControllerMovement();
-
-        Debug.Log($"#Motor Handler# isRunning: {isRunning}");
     }
 
     private void CharacterControllerMovement()
