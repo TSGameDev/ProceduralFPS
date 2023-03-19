@@ -414,6 +414,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8133197043236645830}
+  - {fileID: 8133197044528797798}
   - {fileID: 8133197044495223468}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -477,7 +478,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HorizontalSensitivity: 50
-  debugWeapon: {fileID: 0}
 --- !u!1 &8133197044340914406
 GameObject:
   m_ObjectHideFlags: 0
@@ -629,9 +629,8 @@ Transform:
   m_Children:
   - {fileID: 8133197043599050914}
   - {fileID: 8133197043141731840}
-  - {fileID: 8133197044528797798}
   m_Father: {fileID: 8133197044138180922}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8133197044528797797
 GameObject:
@@ -661,8 +660,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8133197044495223468}
-  m_RootOrder: 2
+  m_Father: {fileID: 8133197044138180922}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &7402778164165321663
 PrefabInstance:
