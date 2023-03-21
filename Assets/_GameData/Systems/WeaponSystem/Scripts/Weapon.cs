@@ -15,8 +15,9 @@ namespace TSGameDev.FPS.WeaponSystem
         private bool _CanShoot;
 
         [Header("Aiming Data")]
-        [SerializeField] private Transform cameraTransform;
         [SerializeField] private Transform weaponHolderTransform;
+        [SerializeField] private Transform aimInTransform;
+        [SerializeField] private Transform weaponReturnTransform;
         [SerializeField] private Transform sightTransform;
         [SerializeField] private float sightOffset;
         [SerializeField] private float aimingInTime;
@@ -58,13 +59,13 @@ namespace TSGameDev.FPS.WeaponSystem
             Vector3 _TargetPos;
 
             if (_IsAiming)
-                _TargetPos = cameraTransform.position + (transform.position - sightTransform.position) + (cameraTransform.forward * sightOffset);
+                _TargetPos = aimInTransform.position + (transform.position - sightTransform.position) + (aimInTransform.forward * sightOffset);
             else
-                _TargetPos = weaponHolderTransform.position;
+                _TargetPos = weaponReturnTransform.position;
 
-            weaponAimInPos = transform.position;
+            weaponAimInPos = weaponHolderTransform.position;
             weaponAimInPos = Vector3.SmoothDamp(weaponAimInPos, _TargetPos, ref weaponAimInPosVelocity, aimingInTime);
-            transform.position = weaponAimInPos;
+            weaponHolderTransform.position = weaponAimInPos;
         }
 
         private void CountDownShotTimer()

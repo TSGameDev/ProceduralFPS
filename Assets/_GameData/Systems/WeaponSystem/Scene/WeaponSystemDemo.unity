@@ -973,6 +973,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2145441278}
   - {fileID: 1431296548}
   m_Father: {fileID: 626554658}
   m_RootOrder: 0
@@ -2374,7 +2375,7 @@ Transform:
   m_Children:
   - {fileID: 1465283767}
   m_Father: {fileID: 840969854}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1465283766
 PrefabInstance:
@@ -2446,7 +2447,7 @@ PrefabInstance:
     - target: {fileID: 6597799795249021349, guid: 0ef98e0d6bda494448c4d00336002b06,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8133197044616198297, guid: 0ef98e0d6bda494448c4d00336002b06,
         type: 3}
@@ -2458,6 +2459,11 @@ PrefabInstance:
       propertyPath: aimingInTime
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 8133197044616198297, guid: 0ef98e0d6bda494448c4d00336002b06,
+        type: 3}
+      propertyPath: aimInTransform
+      value: 
+      objectReference: {fileID: 2059402938}
     - target: {fileID: 8133197044616198297, guid: 0ef98e0d6bda494448c4d00336002b06,
         type: 3}
       propertyPath: sightTransform
@@ -2473,6 +2479,11 @@ PrefabInstance:
       propertyPath: weaponHolderTransform
       value: 
       objectReference: {fileID: 1431296548}
+    - target: {fileID: 8133197044616198297, guid: 0ef98e0d6bda494448c4d00336002b06,
+        type: 3}
+      propertyPath: weaponReturnTransform
+      value: 
+      objectReference: {fileID: 2145441278}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ef98e0d6bda494448c4d00336002b06, type: 3}
 --- !u!4 &1465283767 stripped
@@ -3056,3 +3067,34 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!1 &2145441277
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2145441278}
+  m_Layer: 0
+  m_Name: WeaponReturnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2145441278
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2145441277}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.47599995, y: -0.27500004, z: 0.51399994}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 840969854}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
