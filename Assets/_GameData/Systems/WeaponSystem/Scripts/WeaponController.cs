@@ -19,8 +19,11 @@ namespace TSGameDev.FPS.WeaponSystem
         {
             if(_InputHandler.GetLeftClick())
                 ApplyWeaponFire();
+
+            ApplyWeaponAim();
         }
 
         private void ApplyWeaponFire() => _CurrentWeapon.Fire();
+        private void ApplyWeaponAim() => _CurrentWeapon.SetAim(_InputHandler.GetRightClickHeld());
     }
 }

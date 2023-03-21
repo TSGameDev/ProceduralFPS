@@ -2445,24 +2445,45 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6597799795249021349, guid: 0ef98e0d6bda494448c4d00336002b06,
         type: 3}
-      propertyPath: bobRotMultiplier.x
-      value: 2
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6597799795249021349, guid: 0ef98e0d6bda494448c4d00336002b06,
+    - target: {fileID: 8133197044616198297, guid: 0ef98e0d6bda494448c4d00336002b06,
         type: 3}
-      propertyPath: bobRotMultiplier.y
-      value: 2
+      propertyPath: sightOffset
+      value: 0.4
       objectReference: {fileID: 0}
-    - target: {fileID: 6597799795249021349, guid: 0ef98e0d6bda494448c4d00336002b06,
+    - target: {fileID: 8133197044616198297, guid: 0ef98e0d6bda494448c4d00336002b06,
         type: 3}
-      propertyPath: bobRotMultiplier.z
-      value: 2
+      propertyPath: aimingInTime
+      value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 8133197044616198297, guid: 0ef98e0d6bda494448c4d00336002b06,
+        type: 3}
+      propertyPath: sightTransform
+      value: 
+      objectReference: {fileID: 1465283768}
+    - target: {fileID: 8133197044616198297, guid: 0ef98e0d6bda494448c4d00336002b06,
+        type: 3}
+      propertyPath: cameraTransform
+      value: 
+      objectReference: {fileID: 2059402938}
+    - target: {fileID: 8133197044616198297, guid: 0ef98e0d6bda494448c4d00336002b06,
+        type: 3}
+      propertyPath: weaponHolderTransform
+      value: 
+      objectReference: {fileID: 1431296548}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ef98e0d6bda494448c4d00336002b06, type: 3}
 --- !u!4 &1465283767 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3981842266692322424, guid: 0ef98e0d6bda494448c4d00336002b06,
+    type: 3}
+  m_PrefabInstance: {fileID: 1465283766}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1465283768 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3539095354477427117, guid: 0ef98e0d6bda494448c4d00336002b06,
     type: 3}
   m_PrefabInstance: {fileID: 1465283766}
   m_PrefabAsset: {fileID: 0}
