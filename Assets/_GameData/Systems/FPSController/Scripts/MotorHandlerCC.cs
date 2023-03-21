@@ -17,17 +17,28 @@ namespace TSGameDev.FPS.Movement
 
         [HideInInspector]
         public Vector2 moveDir { private get; set; }
+
         [HideInInspector]
         public bool hasJumped { private get; set; }
+
         [HideInInspector]
         public bool isRunning { private get; set; }
+
+        #endregion
+
+        #region Getters
+
+        [HideInInspector]
+        public bool isGrounded { get; private set; }
+
+        public float GetWalkingSpeed() => speed;
+        public float GetRunningSpeed() => runningSpeed;
 
         #endregion
 
         #region Private Variables
 
         private Vector3 _PlayerVerticalVelocity;
-        private bool _IsGrounded;
         private float _Gravity = -9.81f;
         private float _FallMultiplier = 2.5f;
         private CharacterController _CharacterController;
@@ -41,7 +52,7 @@ namespace TSGameDev.FPS.Movement
 
         private void Update()
         {
-            _IsGrounded = _CharacterController.isGrounded;
+            isGrounded = _CharacterController.isGrounded;
             CharacterControllerMovement();
         }
 
@@ -68,10 +79,10 @@ namespace TSGameDev.FPS.Movement
 
         private void HandleVerticalMovement()
         {
-            if (_IsGrounded && _PlayerVerticalVelocity.y < 0)
+            if (isGrounded && _PlayerVerticalVelocity.y < 0)
                 _PlayerVerticalVelocity.y = 0;
 
-            if (hasJumped && _IsGrounded)
+            if (hasJumped && isGrounded)
                 _PlayerVerticalVelocity.y += jumpHeight;
 
             _PlayerVerticalVelocity.y += _Gravity * Time.deltaTime * _FallMultiplier;

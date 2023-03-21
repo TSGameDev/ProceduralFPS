@@ -118,6 +118,8 @@ MonoBehaviour:
   maxRotationStep: 15
   posSmooth: 3
   rotSmooth: 5
+  _TravelLimit: {x: 0.025, y: 0.0025, z: 0.025}
+  _BobLimit: {x: 0.01, y: 0.001, z: 0.01}
 --- !u!1 &8149772324164234423
 GameObject:
   m_ObjectHideFlags: 0
