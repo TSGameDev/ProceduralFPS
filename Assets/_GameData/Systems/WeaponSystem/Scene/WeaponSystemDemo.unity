@@ -282,6 +282,12 @@ LightingSettings:
   m_PVRFilteringAtrousPositionSigmaIndirect: 2
   m_PVRFilteringAtrousPositionSigmaAO: 1
   m_PVRTiledBaking: 0
+--- !u!1 &459238367 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3981842266692322308, guid: 0ef98e0d6bda494448c4d00336002b06,
+    type: 3}
+  m_PrefabInstance: {fileID: 1465283766}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &626554654
 GameObject:
   m_ObjectHideFlags: 0
@@ -351,7 +357,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceeb52e5a004b8b4fa4383c1b58dde26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HorizontalSensitivity: 50
 --- !u!114 &626554661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2449,6 +2454,16 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6597799795249021349, guid: 0ef98e0d6bda494448c4d00336002b06,
+        type: 3}
+      propertyPath: bobRunningAmount
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6597799795249021349, guid: 0ef98e0d6bda494448c4d00336002b06,
+        type: 3}
+      propertyPath: bobWalkingAmount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8133197044616198297, guid: 0ef98e0d6bda494448c4d00336002b06,
         type: 3}
       propertyPath: sightOffset
@@ -2504,12 +2519,30 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1465283766}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 459238367}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a232cce717790442a74cd39d4781190, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1465283772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 459238367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ecb45f4f1f18f1409ed5cc8ecc077f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  recoilX: -1
+  recoilY: 1
+  recoilZ: 3
+  kickBackZ: 0.02
+  snappiness: 5
+  returnAmount: 8
 --- !u!114 &1564629621
 MonoBehaviour:
   m_ObjectHideFlags: 0

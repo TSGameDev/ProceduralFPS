@@ -2,10 +2,11 @@ using UnityEngine;
 
 namespace TSGameDev.FPS.Movement
 {
-    public class PlayerController : MonoBehaviour
+    [RequireComponent(typeof(MotorHandlerCC))]
+    [RequireComponent(typeof(RotationHandlerCC))]
+    [RequireComponent(typeof(InputHandler))]
+    public class PlayerControllerCC : MonoBehaviour
     {
-        [SerializeField] private float HorizontalSensitivity;
-
         private InputHandler _InputHandler;
         private MotorHandlerCC _MotorHandler;
         private RotationHandlerCC _RotationHandler;

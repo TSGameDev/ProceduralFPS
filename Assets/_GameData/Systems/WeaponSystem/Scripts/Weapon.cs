@@ -4,11 +4,17 @@ namespace TSGameDev.FPS.WeaponSystem
 {
     public class Weapon : MonoBehaviour, IWeapon
     {
+        #region Variables
+
         [Header("General Data")]
         [SerializeField] WeaponData weaponData;
 
+        private WeaponBobAndSway _WeaponBobAndSway;
+
         [Header("Shooting Data")]
         [SerializeField] Transform weaponFirePoint;
+
+        private WeaponRecoil _WeaponRecoil;
         private int _CurrentMagAmount;
         private int _CurrentAmmoAmount;
         private float _ShotTimer;
@@ -21,12 +27,30 @@ namespace TSGameDev.FPS.WeaponSystem
         [SerializeField] private Transform sightTransform;
         [SerializeField] private float sightOffset;
         [SerializeField] private float aimingInTime;
+
         private Vector3 weaponAimInPos;
         private Vector3 weaponAimInPosVelocity;
 
+        #endregion
+
+        #region Setters
+
+        public Vector2 movementInput { get; private set; }
+        public Vector2 mouseInput { get; private set; }
+        public bool isRunning { get; private set; }
+        public bool isGrounded { get; private set; }
+
+        public Vector2 MovementInput { set => movementInput = value; }
+        public Vector2 MouseInput { set => mouseInput = value; }
+        public bool IsRunning { set => isRunning = value; }
+        public bool IsGrounded { set => isGrounded = value; }
+
+        #endregion
 
         private void Awake()
         {
+            _WeaponRecoil = GetComponent<WeaponRecoil>();
+            _WeaponBobAndSway = GetComponent<WeaponBobAndSway>();
             _CurrentAmmoAmount = weaponData.GetAmmoAmount();
             _CurrentMagAmount= weaponData.GetMagAmount();
             _ShotTimer = 0;
@@ -36,6 +60,7 @@ namespace TSGameDev.FPS.WeaponSystem
         private void Update()
         {
             CountDownShotTimer();
+            ApplyWeaponSwayandRecoil();
         }
 
         public void Fire()
@@ -45,6 +70,7 @@ namespace TSGameDev.FPS.WeaponSystem
                 Debug.DrawLine(weaponFirePoint.position, hit.point, Color.red, 60);
                 _CanShoot = false;
                 _ShotTimer = weaponData.GetShotDelay();
+                _WeaponRecoil.ApplyRecoil();
                 Debug.Log("#Weapon# Weapon Has Shot");
             }
         }
@@ -81,5 +107,12 @@ namespace TSGameDev.FPS.WeaponSystem
                 _ShotTimer = 0f;
             }
         }
+
+        private void ApplyWeaponSwayandRecoil()
+        {
+            transform.localPosition = _WeaponBobAndSway.GetCurrentSwayBobPos() + _WeaponRecoil.GetCurrentRecoilPos();
+            transform.localRotation = _WeaponBobAndSway.GetCurrentSwayBobRot() * Quaternion.Euler(_WeaponRecoil.GetCurrentRecoilRot());
+        }
+
     }
 }
