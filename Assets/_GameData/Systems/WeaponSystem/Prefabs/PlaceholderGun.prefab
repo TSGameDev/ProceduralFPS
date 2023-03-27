@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9128213212259772227}
   - component: {fileID: 7422487098394589950}
   - component: {fileID: 3488858976087473392}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 1458918354185074624}
   - component: {fileID: 5662549008498009383}
   - component: {fileID: 3631136578394985281}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 579991440620720947}
   - component: {fileID: 8232642636908456954}
   - component: {fileID: 8327180452790598986}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -304,7 +304,9 @@ GameObject:
   - component: {fileID: 3981842266692322426}
   - component: {fileID: 8133197044616198297}
   - component: {fileID: 6597799795249021349}
-  m_Layer: 0
+  - component: {fileID: 1465283772}
+  - component: {fileID: 1465283776}
+  m_Layer: 6
   m_Name: PlaceholderGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -393,11 +395,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponData: {fileID: 11400000, guid: 31cb5b89eade095438d1c78171fec0fe, type: 2}
   weaponFirePoint: {fileID: 598289179256239052}
-  cameraTransform: {fileID: 0}
   weaponHolderTransform: {fileID: 0}
-  sightTransform: {fileID: 0}
-  sightOffset: 0
-  aimingInTime: 0
+  aimInTransform: {fileID: 0}
+  weaponReturnTransform: {fileID: 0}
+  sightTransform: {fileID: 3539095354477427117}
+  sightOffset: 0.4
+  aimingInTime: 0.2
 --- !u!114 &6597799795249021349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -418,7 +421,46 @@ MonoBehaviour:
   rotSmooth: 5
   _TravelLimit: {x: 0.025, y: 0.0025, z: 0.025}
   _BobLimit: {x: 0.01, y: 0.001, z: 0.01}
+  bobWalkingAmount: 1
+  bobRunningAmount: 3
   bobRotMultiplier: {x: 2, y: 3, z: 2}
+--- !u!114 &1465283772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3981842266692322308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ecb45f4f1f18f1409ed5cc8ecc077f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  recoilX: -0.5
+  recoilY: 0.5
+  recoilZ: 1.5
+  kickBackZ: 0.01
+  snappiness: 5
+  returnAmount: 8
+--- !u!114 &1465283776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3981842266692322308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2265357560224fb4faf743d014529896, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ignoreLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  clipProjector: {fileID: 0}
+  checkDis: 1
+  rotationRate: 3
+  newRotDirection: {x: 0, y: -90, z: 0}
 --- !u!1 &5215733546883411908
 GameObject:
   m_ObjectHideFlags: 0
@@ -428,7 +470,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3539095354477427117}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SightLine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -459,7 +501,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3882632805651140113}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MakeShift Sights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -493,7 +535,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 598289179256239052}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Firepoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
