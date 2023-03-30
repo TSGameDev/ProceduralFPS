@@ -1,4 +1,5 @@
 using Cinemachine;
+using System.Collections;
 using UnityEngine;
 
 namespace TSGameDev.FPS.WeaponSystem
@@ -17,8 +18,13 @@ namespace TSGameDev.FPS.WeaponSystem
 
         [Header("Shooting Data")]
         [SerializeField] Transform weaponFirePoint;
+        [SerializeField] AudioClip fireSound;
+        [SerializeField] ParticleSystem genericHitEffect;
 
         private WeaponRecoil _WeaponRecoil;
+        private AudioSource _Audiosource;
+        private int _MaxMagAmount;
+        private int _MaxAmmoAmount;
         private int _CurrentMagAmount;
         private int _CurrentAmmoAmount;
         private float _ShotTimer;
@@ -51,13 +57,26 @@ namespace TSGameDev.FPS.WeaponSystem
 
         #endregion
 
+        #region Getters
+
+        public bool IsWeaponAutomatic { get => weaponData.GetWeaponAutomatic(); }
+
+        #endregion
+
         private void Awake()
         {
             _WeaponRecoil = GetComponent<WeaponRecoil>();
             _WeaponBobAndSway = GetComponent<WeaponBobAndSway>();
             _WeaponClipProvention = GetComponent<WeaponClipProvention>();
-            _CurrentAmmoAmount = weaponData.GetAmmoAmount();
-            _CurrentMagAmount= weaponData.GetMagAmount();
+            _Audiosource = GetComponent<AudioSource>();
+        }
+
+        private void Start()
+        {
+            _MaxAmmoAmount = weaponData.GetAmmoAmount();
+            _CurrentAmmoAmount = _MaxAmmoAmount;
+            _MaxMagAmount = weaponData.GetMagAmount();
+            _CurrentMagAmount = _MaxMagAmount;
             _ShotTimer = 0;
             _CanShoot = true;
         }
@@ -74,7 +93,7 @@ namespace TSGameDev.FPS.WeaponSystem
         {
             if (_ShotTimer > 0f)
             {
-                _ShotTimer -= 1f * Time.time;
+                _ShotTimer -= 1f * Time.deltaTime;
                 _CanShoot = false;
             }
             else if (_ShotTimer <= 0)
@@ -98,22 +117,27 @@ namespace TSGameDev.FPS.WeaponSystem
 
         public void Fire()
         {
-            if(_CanShoot)
+            if(_CanShoot && _CurrentMagAmount > 0)
             {
                 _CanShoot = false;
                 _ShotTimer = weaponData.GetShotDelay();
                 _WeaponRecoil.ApplyRecoil();
+                _Audiosource.PlayOneShot(fireSound);
+                //_CurrentMagAmount--;
 
                 if (Physics.Raycast(weaponFirePoint.position, weaponFirePoint.forward, out RaycastHit hit, weaponData.GetWeaponRange()))
                 {
                     Debug.DrawLine(weaponFirePoint.position, hit.point, Color.red, 60);
+                    //Spawn Bullet hole
+                    ParticleSystem p = Instantiate(genericHitEffect, hit.point + (hit.normal * 0.025f), Quaternion.identity);
+                    p.transform.rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
                 }
             }
         }
 
         public void Reload()
         {
-            throw new System.NotImplementedException();
+
         }
 
         public void SetAim(bool _IsAiming)

@@ -9,6 +9,7 @@ namespace TSGameDev.FPS.WeaponSystem
         [SerializeField] int _MagAmount;
         [SerializeField] int _AmmoAmount;
         [SerializeField] float _WeaponRange;
+        [SerializeField] bool _IsWeaponAutomatic;
         [SerializeField] float _TimeBetweenShots;
         [SerializeField] float _ShotDamage;
 
@@ -16,6 +17,7 @@ namespace TSGameDev.FPS.WeaponSystem
         public int GetMagAmount() => _MagAmount;
         public int GetAmmoAmount() => _AmmoAmount;
         public float GetWeaponRange() => _WeaponRange;
+        public bool GetWeaponAutomatic() => _IsWeaponAutomatic;
         public float GetShotDelay() => _TimeBetweenShots;
         public float GetShotDamage() => _ShotDamage;
 

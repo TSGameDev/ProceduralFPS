@@ -22,8 +22,16 @@ namespace TSGameDev.FPS.WeaponSystem
         {
             UpdateWeaponInputs();
 
-            if (_InputHandler.GetLeftClick())
-                ApplyWeaponFire();
+            if (_CurrentWeapon.IsWeaponAutomatic)
+            {
+                if (_InputHandler.GetLeftClickHeld())
+                    ApplyWeaponFire();
+            }
+            else
+            {
+                if (_InputHandler.GetLeftClick())
+                    ApplyWeaponFire();
+            }
 
             ApplyWeaponAim();
         }

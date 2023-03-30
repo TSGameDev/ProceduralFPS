@@ -16,5 +16,6 @@ MonoBehaviour:
   _MagAmount: 12
   _AmmoAmount: 48
   _WeaponRange: 10
-  _TimeBetweenShots: 1
+  _IsWeaponAutomatic: 0
+  _TimeBetweenShots: 0.15
   _ShotDamage: 1

@@ -70,3 +70,12 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# Project Dependant Unity Store Asset Folders
+/Assets/Sci-Fi Characters/*
+/Assets/Sci-Fi Gun Sounds/*
+/Assets/Sci-fi Weapons Arsenal/*
+/Assets/Samples/*
+/Assets/Plugins/*
+/Assets/JMO Assets/*
+/Assets/ConsolePro/*

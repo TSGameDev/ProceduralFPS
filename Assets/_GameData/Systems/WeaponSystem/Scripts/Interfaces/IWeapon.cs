@@ -8,6 +8,7 @@ namespace TSGameDev.FPS.WeaponSystem
         public Vector2 MouseInput { set; }
         public bool IsRunning { set; }
         public bool IsGrounded { set; }
+        public bool IsWeaponAutomatic { get; }
 
         public void Fire();
         public void SetAim(bool _IsAiming);
