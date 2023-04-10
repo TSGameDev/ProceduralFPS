@@ -10,12 +10,17 @@ namespace TSGameDev.FPS.WeaponSystem
         private IWeapon _CurrentWeapon;
         private IMotor _CharacterMotor;
         private InputHandler _InputHandler;
+        private Animator _PlayerAnimator;
+        private AnimEvents _OnAnimEvents;
 
         private void Awake()
         {
             _CurrentWeapon = debugWeapon;
             _InputHandler = GetComponent<InputHandler>();
             _CharacterMotor = GetComponent<IMotor>();
+            _PlayerAnimator = GetComponentInChildren<Animator>();
+            _OnAnimEvents = GetComponentInChildren<AnimEvents>();
+            _OnAnimEvents.SetOnReload(debugWeapon.PerformReloadFunc);
         }
 
         private void Update()
@@ -42,6 +47,7 @@ namespace TSGameDev.FPS.WeaponSystem
             _CurrentWeapon.MouseInput = _InputHandler.GetMouseInput();
             _CurrentWeapon.IsRunning = _InputHandler.GetRunningInput();
             _CurrentWeapon.IsGrounded = _CharacterMotor.IsGrounded;
+            debugWeapon.PlayerAnimator = _PlayerAnimator;
         }
 
         private void ApplyWeaponFire() => _CurrentWeapon.Fire();

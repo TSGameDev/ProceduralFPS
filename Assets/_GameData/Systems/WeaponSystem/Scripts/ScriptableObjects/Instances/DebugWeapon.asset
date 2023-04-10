@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: DebugWeapon
   m_EditorClassIdentifier: 
   _WeaponName: DebugWeapon
-  _MagAmount: 12
-  _AmmoAmount: 48
+  _MagAmount: 4
+  _AmmoAmount: 12
   _WeaponRange: 10
   _IsWeaponAutomatic: 0
   _TimeBetweenShots: 0.15

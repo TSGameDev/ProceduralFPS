@@ -23,6 +23,7 @@ namespace TSGameDev.FPS.WeaponSystem
 
         private WeaponRecoil _WeaponRecoil;
         private AudioSource _Audiosource;
+        private Animator _PlayerAnimator;
         private int _MaxMagAmount;
         private int _MaxAmmoAmount;
         private int _CurrentMagAmount;
@@ -54,6 +55,8 @@ namespace TSGameDev.FPS.WeaponSystem
         public Vector2 MouseInput { set => mouseInput = value; }
         public bool IsRunning { set => isRunning = value; }
         public bool IsGrounded { set => isGrounded = value; }
+
+        public Animator PlayerAnimator { set => _PlayerAnimator = value; }
 
         #endregion
 
@@ -123,21 +126,34 @@ namespace TSGameDev.FPS.WeaponSystem
                 _ShotTimer = weaponData.GetShotDelay();
                 _WeaponRecoil.ApplyRecoil();
                 _Audiosource.PlayOneShot(fireSound);
-                //_CurrentMagAmount--;
+                _CurrentMagAmount--;
 
                 if (Physics.Raycast(weaponFirePoint.position, weaponFirePoint.forward, out RaycastHit hit, weaponData.GetWeaponRange()))
                 {
                     Debug.DrawLine(weaponFirePoint.position, hit.point, Color.red, 60);
-                    //Spawn Bullet hole
                     ParticleSystem p = Instantiate(genericHitEffect, hit.point + (hit.normal * 0.025f), Quaternion.identity);
                     p.transform.rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
                 }
             }
+            else
+            {
+                Reload();
+            }
+            Debug.Log($"Current Mag: {_CurrentMagAmount}");
+            Debug.Log($"Current Ammo: {_CurrentAmmoAmount}");
         }
 
         public void Reload()
         {
+            _CanShoot = false;
+            _PlayerAnimator.SetTrigger("Reload");
+        }
 
+        public void PerformReloadFunc()
+        {
+            _CanShoot = true;
+            _CurrentMagAmount = _MaxMagAmount;
+            _CurrentAmmoAmount -= _MaxMagAmount;
         }
 
         public void SetAim(bool _IsAiming)
